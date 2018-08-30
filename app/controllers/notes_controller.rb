@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
   def index
-    @notes = Note.all
+    @notes = Note.order(created_at: :asc)
   end
 
   def show
@@ -18,6 +18,20 @@ class NotesController < ApplicationController
       redirect_to notes_path
     else
       render :new
+    end
+  end
+
+  def edit
+    @note = Note.find(params[:id])
+  end
+
+  def update
+    @note = Note.find(params[:id])
+
+    if @note.update(notes_params)
+      redirect_to note_path(@note.id)
+    else 
+      render :edit
     end
   end
 

@@ -3,4 +3,5 @@
 <p><u>Author</u>: <%= @note.author %></p>
 <p><u>Note</u>: <%= @note.body %></p>
 <%= link_to 'Go Back', notes_path %>
+<%= link_to 'Edit',edit_note_path(@note.id) %>
 
